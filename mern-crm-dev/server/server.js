@@ -64,6 +64,8 @@ app.use(
   }),
 );
 
-app.listen(port, () => {
-  logger.log("info", `Server listening on port ${port}`);
+const PORT_TO_LISTEN = process.env.PORT || port  ||5000;
+
+app.listen(PORT_TO_LISTEN, () => {
+  logger.log("info", `Server listening on port ${PORT_TO_LISTEN}`);
 });
