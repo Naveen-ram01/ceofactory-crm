@@ -1,6 +1,5 @@
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const connection = require('./db');
 require("dotenv").config();
 
 // const { createClient } = require("redis");
@@ -17,10 +16,8 @@ require("dotenv").config();
 //   prefix: 'sanzCRM:',
 // });
 
-const mongoStore = new MongoStore({
-  mongoUrl: process.env.MONGODB_URI,
-  mongooseConnection: connection,
-  collectionName: 'sessions',
+const mongoStore = MongoStore.create({
+  mongoUrl: process.env.MONGO_URI
 });
 
 module.exports = session({
